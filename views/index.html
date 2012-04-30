@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
-	<script type="text/javascript" href="static/bootstrap/js/bootstrap.js"></script>
 	<title>litmus</title>
 </head>
 <body style="margin-top: 40px">
@@ -28,6 +27,7 @@
 			<div class="span2">
 				<!-- Sidebar content -->
 				<h2>Sidebar</h2>
+				<p><a class="btn" data-toggle="modal" data-target="#projectModal"><i class="icon-plus"></i> Project</a></p>
 			</div>
 			<div class="span10">
 				<!-- Body content -->
@@ -37,7 +37,37 @@
 	</div>
 	</app>
 
+
 	<footer>
 	</footer>
+
+	<modals>
+	<div class="modal hide fade in" id="projectModal" >
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">x</button>
+			<h3>Add Project</h3>
+		</div>
+		<div class="modal-body">
+			<div class="well">
+				<div class="row">
+				<label>Title</label>
+				<input type="text" class="span5" placeholder="what is the title?" />
+				<label>Description</label>
+				<textarea rows="3" class="span5" placeholder="describe your project..."></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<a href="#" class="btn btn-primary">Save changes</a>
+		</div>
+	</div>
+	</modals>
+
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta2/handlebars.min.js"></script>
+	<script	type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+	<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+	<script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
