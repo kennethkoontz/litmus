@@ -13,5 +13,6 @@ var routes = module.exports = {
      * A request for '/foobar' will call the 'foobar' action.
      *
      */
-    '/': 'index'
+    '/': 'index',
+    '/project/create': 'createProject'
 }
