@@ -1,3 +1,5 @@
+var http = require('http');
+
 var actions = module.exports = {
     index: function() {
         this.render('./views/index.html');
@@ -16,7 +18,6 @@ var actions = module.exports = {
             };
             entry['type'] = 'project';
         if (req.method === 'POST') {
-            var http = require('http'),
                 data = '',
                 httpReq = http.request(couchOptions, function(res) {
                     res.on('data', function(chunk) {
@@ -32,6 +33,36 @@ var actions = module.exports = {
             httpReq.end();
         } else {
             self.statusCode(405);
+        }
+    },
+    allProjects: function() {
+        var req = this.request,
+            res = this.response,
+            self = this,
+            data = '',
+            couchOptions = {
+                host: 'localhost',
+                port: '5984',
+                path: '/litmus/_design/all/_view/projects',
+            };
+        if (req.method === 'GET') {
+            var req = http.request(couchOptions, function(res) {
+                res.on('data', function(chunk) {
+                    data += chunk;
+                }).on('end', function() {
+                    var o = JSON.parse(data);
+                    if (o['error']) {
+                        throw 'db error: ' + o['error'];
+                    } else {
+                        self.json(o['rows']);
+                    }
+                });
+            }).on('error', function(e) {
+                console.log(e.message);
+            });
+            req.end();
+        } else {
+            self.statusCode(405); 
         }
     }
 };

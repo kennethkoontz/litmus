@@ -14,5 +14,6 @@ var routes = module.exports = {
      *
      */
     '/': 'index',
-    '/project/create': 'createProject'
+    '/project/create': 'createProject',
+    '/projects': 'allProjects'
 }
